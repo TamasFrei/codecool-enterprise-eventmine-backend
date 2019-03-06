@@ -27,7 +27,11 @@ public class EventController {
         return eventStorage.getEvents();
     }
 
-
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/random")
+    public void createRandomEvents(){
+        eventStorage.createRandomEvents(10);
+    }
 
 
 }
