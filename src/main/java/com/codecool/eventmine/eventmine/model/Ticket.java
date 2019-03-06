@@ -15,6 +15,8 @@ public abstract class Ticket {
     }
 
     public Ticket(double price, Currency currency, String place) {
+        this.id = counter;
+        counter++;
         this.price = price;
         this.currency = currency;
         this.place = place;
