@@ -14,4 +14,8 @@ public class EventStorage {
         events.add(event);
         return event;
     }
+
+    public List<Event> getEvents() {
+        return events;
+    }
 }
