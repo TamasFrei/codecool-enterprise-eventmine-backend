@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/events")
@@ -25,6 +27,12 @@ public class EventController {
     @GetMapping("/list")
     public List<Event> eventList(){
         return eventStorage.getEvents();
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/list/popularity")
+    public List<Event> eventListByPopularity(){
+        return eventStorage.getEvents().stream().sorted(Comparator.comparing(Event::getNumOfRemainingTickets)).collect(Collectors.toList());
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
