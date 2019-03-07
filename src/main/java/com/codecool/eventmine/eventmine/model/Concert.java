@@ -6,8 +6,8 @@ public class Concert extends Event {
 
     private String performer;
 
-    public Concert(String name, String location, Date date, String performer) {
-        super(name, location, date);
+    public Concert(String name, String location, Date date, int numOfRemainingTickets, String performer) {
+        super(name, location, date, numOfRemainingTickets);
         this.performer = performer;
     }
 

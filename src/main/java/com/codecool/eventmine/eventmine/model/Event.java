@@ -1,8 +1,6 @@
 package com.codecool.eventmine.eventmine.model;
 
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 
 public abstract class Event {
 
@@ -11,39 +9,26 @@ public abstract class Event {
     protected String name;
     protected String location;
     protected Date date;
-    private List<Ticket> remainingTickets = new LinkedList<>();
+    protected int numOfRemainingTickets;
 
     public Event() {
     }
 
-    public Event(String name, String location, Date date) {
+    public Event(String name, String location, Date date, int numOfRemainingTickets) {
         this.eventId = name + counter;
         counter++;
         this.name = name;
         this.location = location;
         this.date = date;
+        this.numOfRemainingTickets = numOfRemainingTickets;
     }
 
-    public Ticket addTicket(Ticket ticket) {
-        remainingTickets.add(ticket);
-        return ticket;
+    public void removeTicket(int amount) {
+        this.numOfRemainingTickets -= amount;
     }
 
-    public void removeTicket(Ticket ticket) {
-        remainingTickets.remove(ticket);
-    }
-
-    public Ticket getById(int ticketId) {
-        for (Ticket ticket: remainingTickets) {
-            if(ticket.getId() == ticketId) {
-                return ticket;
-            }
-        }
-        return null;
-    }
-
-    public List<Ticket> getRemainingTickets() {
-        return remainingTickets;
+    public int getNumOfRemainingTickets() {
+        return numOfRemainingTickets;
     }
 
     public String getEventId() {
