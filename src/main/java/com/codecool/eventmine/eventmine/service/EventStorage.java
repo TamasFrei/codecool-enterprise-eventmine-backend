@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EventStorage {
@@ -28,6 +30,16 @@ public class EventStorage {
         for (int i = 0; i < numOfEvents; i++) {
             addEvent(eventCreator.createRandomEvent());
         }
+    }
 
+    public List<Event> selectSearchedEvents(String searchedKeyword) {
+        List<Event> searchResults = new LinkedList<>();
+        for (Event event: events
+             ) {
+            if(event.getName().equals(searchedKeyword)) {
+                searchResults.add(event);
+            }
+        }
+        return searchResults;
     }
 }
