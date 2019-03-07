@@ -24,7 +24,7 @@ public class EventCreator {
         String name = eventNames.get(random.nextInt(eventNames.size()));
         String eventLocation = eventlocations.get(random.nextInt(eventlocations.size()));
         int numOfRemainingTickets = random.nextInt(900) + 100;
-        return new Concert(name, eventLocation, eventDate, numOfRemainingTickets, name);
+        return new Concert(name, eventLocation, eventDate, numOfRemainingTickets, name, 10000);
     }
 
 

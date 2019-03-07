@@ -10,17 +10,19 @@ public abstract class Event {
     protected String location;
     protected Date date;
     protected int numOfRemainingTickets;
+    protected int price;
 
     public Event() {
     }
 
-    public Event(String name, String location, Date date, int numOfRemainingTickets) {
+    public Event(String name, String location, Date date, int numOfRemainingTickets, int price) {
         this.eventId = name + counter;
         counter++;
         this.name = name;
         this.location = location;
         this.date = date;
         this.numOfRemainingTickets = numOfRemainingTickets;
+        this.price = price;
     }
 
     public void removeTicket(int amount) {
@@ -45,5 +47,9 @@ public abstract class Event {
 
     public Date getDate() {
         return date;
+    }
+
+    public int getPrice() {
+        return price;
     }
 }
