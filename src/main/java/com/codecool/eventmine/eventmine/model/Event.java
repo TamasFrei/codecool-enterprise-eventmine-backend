@@ -1,7 +1,14 @@
 package com.codecool.eventmine.eventmine.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public abstract class Event {
 
     private static int counter = 1;
@@ -12,8 +19,6 @@ public abstract class Event {
     protected int numOfRemainingTickets;
     protected int price;
 
-    public Event() {
-    }
 
     public Event(String name, String location, Date date, int numOfRemainingTickets, int price) {
         this.eventId = name + counter;
@@ -29,27 +34,4 @@ public abstract class Event {
         this.numOfRemainingTickets -= amount;
     }
 
-    public int getNumOfRemainingTickets() {
-        return numOfRemainingTickets;
-    }
-
-    public String getEventId() {
-        return eventId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public int getPrice() {
-        return price;
-    }
 }
