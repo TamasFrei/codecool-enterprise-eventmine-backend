@@ -34,4 +34,5 @@ public abstract class Event {
         this.numOfRemainingTickets -= amount;
     }
 
+
 }
