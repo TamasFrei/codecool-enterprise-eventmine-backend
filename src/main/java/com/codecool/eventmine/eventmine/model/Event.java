@@ -1,38 +1,35 @@
 package com.codecool.eventmine.eventmine.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.util.Date;
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.List;
+
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Event {
 
-    private static int counter = 1;
-    protected String eventId;
+    @Id
+    @GeneratedValue
+    @Column(updatable = false, nullable = false)
+    protected Long id;
+
+    @Column(nullable = false)
     protected String name;
+
+    @Column(nullable = false)
     protected String location;
-    protected Date date;
-    protected int numOfRemainingTickets;
-    protected int price;
 
+    @Column(nullable = false)
+    protected LocalDate date;
 
-    public Event(String name, String location, Date date, int numOfRemainingTickets, int price) {
-        this.eventId = name + counter;
-        counter++;
-        this.name = name;
-        this.location = location;
-        this.date = date;
-        this.numOfRemainingTickets = numOfRemainingTickets;
-        this.price = price;
-    }
-
-    public void removeTicket(int amount) {
-        this.numOfRemainingTickets -= amount;
-    }
-
+    @OneToMany(mappedBy = "event", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @Singular
+    protected List<Ticket> availableTickets;
 
 }

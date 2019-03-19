@@ -1,21 +1,22 @@
 package com.codecool.eventmine.eventmine.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.util.Date;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@Entity
 public class Concert extends Event {
 
-    private String performer;
+    @ElementCollection
+    @Singular
+    private Set<String> performers;
 
-    public Concert(String name, String location, Date date, int numOfRemainingTickets, String performer, int price) {
-        super(name, location, date, numOfRemainingTickets, price);
-        this.performer = performer;
-    }
+
 
 }

@@ -25,15 +25,15 @@ public class EventController {
         return eventStorage.getEvents();
     }
 
-    @GetMapping("/list/popularity")
-    public List<Event> eventListByPopularity(){
-        return eventStorage.getEvents().stream().sorted(Comparator.comparing(Event::getNumOfRemainingTickets)).collect(Collectors.toList());
-    }
+//    @GetMapping("/list/popularity")
+//    public List<Event> eventListByPopularity(){
+//        return eventStorage.getEvents().stream().sorted(Comparator.comparing(Event::getNumOfRemainingTickets)).collect(Collectors.toList());
+//    }
 
-    @GetMapping("/random")
-    public void createRandomEvents(){
-        eventStorage.createRandomEvents(10);
-    }
+//    @GetMapping("/random")
+//    public void createRandomEvents(){
+//        eventStorage.createRandomEvents(10);
+//    }
 
     @GetMapping("/search/{keyword}")
     public List<Event> searchEvents(@PathVariable("keyword") String keyword) {

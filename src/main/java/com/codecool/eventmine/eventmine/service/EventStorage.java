@@ -26,11 +26,11 @@ public class EventStorage {
         return events;
     }
 
-    public void createRandomEvents(int numOfEvents){
-        for (int i = 0; i < numOfEvents; i++) {
-            addEvent(eventCreator.createRandomEvent());
-        }
-    }
+//    public void createRandomEvents(int numOfEvents){
+//        for (int i = 0; i < numOfEvents; i++) {
+//            addEvent(eventCreator.createRandomEvent());
+//        }
+//    }
 
     public List<Event> selectSearchedEvents(String searchedKeyword) {
         List<Event> searchResults = new LinkedList<>();
