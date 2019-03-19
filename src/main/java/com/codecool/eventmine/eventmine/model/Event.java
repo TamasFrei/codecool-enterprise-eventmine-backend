@@ -1,23 +1,35 @@
 package com.codecool.eventmine.eventmine.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@MappedSuperclass
 public abstract class Event {
 
+    @Id
+    @GeneratedValue
+    @Column(updatable = false, nullable = false)
+    protected Long id;
 
-    protected String id;
-
+    @Column(nullable = false)
     protected String name;
+
+    @Column(nullable = false)
     protected String location;
+
+    @Column(nullable = false)
     protected LocalDate date;
+
+    @ElementCollection
+    @Singular
     protected List<Ticket> availableTickets;
 
 }
