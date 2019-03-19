@@ -10,7 +10,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Event {
 
     @Id
@@ -27,7 +28,7 @@ public abstract class Event {
     @Column(nullable = false)
     protected LocalDate date;
 
-    @OneToMany(mappedBy = "ticket", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "event", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @Singular
     protected List<Ticket> availableTickets;
 

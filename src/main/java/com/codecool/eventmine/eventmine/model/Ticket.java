@@ -13,7 +13,8 @@ import java.util.Currency;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public abstract class Ticket {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class Ticket {
 
     @Id
     @GeneratedValue
