@@ -12,7 +12,6 @@ import java.util.Currency;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 public abstract class Ticket {
 
