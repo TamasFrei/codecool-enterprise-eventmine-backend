@@ -1,7 +1,15 @@
 package com.codecool.eventmine.eventmine.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Currency;
 
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public abstract class Ticket {
 
     private int counter = 1;
@@ -11,8 +19,6 @@ public abstract class Ticket {
     protected String place;
 
 
-    public Ticket() {
-    }
 
     public Ticket(double price, Currency currency, String place) {
         this.id = counter;
@@ -22,19 +28,4 @@ public abstract class Ticket {
         this.place = place;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public Currency getCurrency() {
-        return currency;
-    }
-
-    public String getPlace() {
-        return place;
-    }
 }
