@@ -20,25 +20,21 @@ public class EventController {
         this.eventStorage = eventStorage;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/list")
     public List<Event> eventList(){
         return eventStorage.getEvents();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/list/popularity")
     public List<Event> eventListByPopularity(){
         return eventStorage.getEvents().stream().sorted(Comparator.comparing(Event::getNumOfRemainingTickets)).collect(Collectors.toList());
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/random")
     public void createRandomEvents(){
         eventStorage.createRandomEvents(10);
     }
 
-    @CrossOrigin(origins="http://localhost:3000")
     @GetMapping("/search/{keyword}")
     public List<Event> searchEvents(@PathVariable("keyword") String keyword) {
         System.out.println("keyword: " + keyword);
