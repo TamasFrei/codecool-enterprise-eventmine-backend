@@ -28,7 +28,7 @@ public abstract class Event {
     @Column(nullable = false)
     protected LocalDate date;
 
-    @ElementCollection
+    @OneToMany(mappedBy = "ticket", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @Singular
     protected List<Ticket> availableTickets;
 
