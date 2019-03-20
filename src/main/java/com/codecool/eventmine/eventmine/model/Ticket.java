@@ -24,8 +24,6 @@ public class Ticket {
     @Column(nullable = false)
     protected double price;
 
-    @Column(nullable = false)
-    protected Currency currency;
     protected String place;
 
     @ManyToOne
