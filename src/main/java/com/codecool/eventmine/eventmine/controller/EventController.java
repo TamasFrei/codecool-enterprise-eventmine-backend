@@ -1,6 +1,8 @@
 package com.codecool.eventmine.eventmine.controller;
 
+import com.codecool.eventmine.eventmine.model.Concert;
 import com.codecool.eventmine.eventmine.model.Event;
+import com.codecool.eventmine.eventmine.repository.ConcertRepository;
 import com.codecool.eventmine.eventmine.service.EventStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,17 +15,20 @@ import java.util.stream.Collectors;
 @RequestMapping("/events")
 public class EventController {
 
-    private EventStorage eventStorage;
+//    private EventStorage eventStorage;
 
     @Autowired
-    public void setEventStorage(EventStorage eventStorage) {
-        this.eventStorage = eventStorage;
-    }
+    private ConcertRepository concertRepository;
 
-    @GetMapping("/list")
-    public List<Event> eventList(){
-        return eventStorage.getEvents();
-    }
+//    @Autowired
+//    public void setEventStorage(EventStorage eventStorage) {
+//        this.eventStorage = eventStorage;
+//    }
+
+//    @GetMapping("/list")
+//    public List<Event> eventList(){
+//        return eventStorage.getEvents();
+//    }
 
 //    @GetMapping("/list/popularity")
 //    public List<Event> eventListByPopularity(){
@@ -36,11 +41,12 @@ public class EventController {
 //    }
 
     @GetMapping("/search/{keyword}")
-    public List<Event> searchEvents(@PathVariable("keyword") String keyword) {
+    public List<Concert> searchEvents(@PathVariable("keyword") String keyword) {
         System.out.println("keyword: " + keyword);
-        List<Event> events = eventStorage.selectSearchedEvents(keyword);
-        System.out.println(events.size());
+        List<Concert> events = concertRepository.findConcertByKeyword(keyword);
         return events;
     }
+
+
 
 }
