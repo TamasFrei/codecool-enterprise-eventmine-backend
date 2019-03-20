@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Currency;
 
 
@@ -19,7 +20,7 @@ public class Ticket {
     @Id
     @GeneratedValue
     @Column(updatable = false, nullable = false)
-    protected Long id;
+    protected Integer id;
 
     @Column(nullable = false)
     protected double price;

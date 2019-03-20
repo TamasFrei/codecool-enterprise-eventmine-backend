@@ -17,7 +17,7 @@ public abstract class Event {
     @Id
     @GeneratedValue
     @Column(updatable = false, nullable = false)
-    protected Long id;
+    protected Integer id;
 
     @Column(nullable = false)
     protected String name;
@@ -31,5 +31,12 @@ public abstract class Event {
     @OneToMany(mappedBy = "event", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @Singular
     protected List<Ticket> availableTickets;
+
+    @Transient
+    protected int numOfAvailableTickets;
+
+    public void calculateAvailableTickets() {
+        this.numOfAvailableTickets = availableTickets.size();
+    }
 
 }
