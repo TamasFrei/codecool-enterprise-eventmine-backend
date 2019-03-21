@@ -33,6 +33,10 @@ public class EventController {
     public List<Concert> searchEvents(@PathVariable("keyword") String keyword) {
         System.out.println("keyword: " + keyword);
         List<Concert> events = concertRepository.findConcertByKeyword(keyword);
+        for (Event concert : events) {
+            concert.calculateAvailableTickets();
+            concert.setAvailableTickets(null);
+        }
         return events;
     }
 
