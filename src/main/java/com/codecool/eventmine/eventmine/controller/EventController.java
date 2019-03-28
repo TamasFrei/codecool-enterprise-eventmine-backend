@@ -4,10 +4,7 @@ import com.codecool.eventmine.eventmine.model.Concert;
 import com.codecool.eventmine.eventmine.model.Event;
 import com.codecool.eventmine.eventmine.repository.ConcertRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,7 +22,6 @@ public class EventController {
             concert.calculateAvailableTickets();
             concert.setAvailableTickets(null);
         }
-        System.out.println(concerts);
         return concerts;
     }
 
@@ -38,6 +34,14 @@ public class EventController {
             concert.setAvailableTickets(null);
         }
         return events;
+    }
+
+    @GetMapping("/{id}")
+    public Concert getEventById(@PathVariable("id") Integer id) {
+        Concert concert = concertRepository.findConcertById(id);
+        concert.calculateAvailableTickets();
+        concert.setAvailableTickets(null);
+        return concert;
     }
 
 }

@@ -17,4 +17,6 @@ public interface ConcertRepository extends JpaRepository<Concert, Integer> {
     @Query("select s from Concert s where s.name like %:keyword%")
     List<Concert> findConcertByKeyword(@Param("keyword") String keyword);
 
+    Concert findConcertById(Integer id);
+
 }
