@@ -25,8 +25,8 @@ public class EventController {
         return concerts;
     }
 
-    @GetMapping("/search/{keyword}")
-    public List<Concert> searchEvents(@PathVariable("keyword") String keyword) {
+    @GetMapping("/{keyword}")
+    public List<Concert> listEventsByKeyword(@PathVariable("keyword") String keyword) {
         System.out.println("keyword: " + keyword);
         List<Concert> events = concertRepository.findConcertByKeyword(keyword);
         for (Event concert : events) {
