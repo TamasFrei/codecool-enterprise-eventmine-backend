@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/events")
-public class EventController {
+public class EventsController {
 
     @Autowired
     private ConcertRepository concertRepository;
