@@ -35,13 +35,4 @@ public class EventsController {
         }
         return events;
     }
-
-    @GetMapping("/{id}")
-    public Concert getEventById(@PathVariable("id") Integer id) {
-        Concert concert = concertRepository.findConcertById(id);
-        concert.calculateAvailableTickets();
-        concert.setAvailableTickets(null);
-        return concert;
-    }
-
 }
