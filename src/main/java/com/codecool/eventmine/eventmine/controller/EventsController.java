@@ -15,7 +15,7 @@ public class EventsController {
     @Autowired
     private ConcertRepository concertRepository;
 
-    @GetMapping("/popularity")
+    @GetMapping("")
     public List<Concert> listEventsByPopularity() {
         List<Concert> concerts = concertRepository.getConcertsByPopularity();
         for (Event concert : concerts) {
