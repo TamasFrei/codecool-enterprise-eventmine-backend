@@ -1,6 +1,8 @@
 package com.codecool.eventmine.eventmine;
 
-import com.codecool.eventmine.eventmine.model.*;
+import com.codecool.eventmine.eventmine.model.Concert;
+import com.codecool.eventmine.eventmine.model.ConcertTicket;
+import com.codecool.eventmine.eventmine.model.PlaceType;
 import com.codecool.eventmine.eventmine.repository.ConcertRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -11,7 +13,6 @@ import org.springframework.context.annotation.Profile;
 
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.HashSet;
 
 @SpringBootApplication
 public class EventmineApplication {
