@@ -12,12 +12,15 @@ import javax.persistence.Enumerated;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 public class ConcertTicket extends Ticket {
 
     @Enumerated(EnumType.STRING)
     private PlaceType placeType;
 
-
+    @Builder
+    public ConcertTicket(double price, String place, Event event, PlaceType placeType) {
+        super(price, place, event);
+        this.placeType = placeType;
+    }
 }
