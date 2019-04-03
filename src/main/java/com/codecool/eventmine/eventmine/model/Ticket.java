@@ -29,4 +29,10 @@ public class Ticket {
 
     @ManyToOne
     protected Event event;
+
+    public Ticket(double price, String place, Event event) {
+        this.price = price;
+        this.place = place;
+        this.event = event;
+    }
 }
