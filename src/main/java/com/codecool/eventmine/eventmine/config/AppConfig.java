@@ -48,8 +48,7 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/").permitAll()
                 .antMatchers(HttpMethod.GET, "/event/{id}").authenticated()
-                .antMatchers(HttpMethod.GET, "/events/{keyword}").authenticated()
-                .antMatchers(HttpMethod.GET, "/events").authenticated();
+                .antMatchers(HttpMethod.GET, "/events/{keyword}").permitAll();
 
     }
 }
