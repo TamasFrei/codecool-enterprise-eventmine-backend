@@ -1,6 +1,7 @@
 package com.codecool.eventmine.eventmine.model;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -34,6 +35,13 @@ public abstract class Event {
 
     @Transient
     protected int numOfAvailableTickets;
+
+    public Event(String name, String location, LocalDate date, List<Ticket> availableTickets) {
+        this.name = name;
+        this.location = location;
+        this.date = date;
+        this.availableTickets = availableTickets;
+    }
 
     public void calculateAvailableTickets() {
         this.numOfAvailableTickets = availableTickets.size();
