@@ -1,7 +1,9 @@
 package com.codecool.eventmine.eventmine.model;
 
-import lombok.*;
-import lombok.experimental.SuperBuilder;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.Singular;
 
 import javax.persistence.*;
 import java.time.LocalDate;
