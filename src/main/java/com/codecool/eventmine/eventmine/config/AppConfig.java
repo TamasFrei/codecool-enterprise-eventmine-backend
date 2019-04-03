@@ -29,10 +29,11 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
     @Bean
     CorsConfigurationSource corasConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "http://localhost:8080"));
         configuration.setAllowedMethods(Arrays.asList("GET","POST"));
         configuration.setAllowCredentials(true);
         configuration.addAllowedHeader("Authorization");
+        configuration.addAllowedHeader("Access-Control-Allow-Origin");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
@@ -46,6 +47,9 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
                 .configure(http)
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/").permitAll()
+                .antMatchers(HttpMethod.GET, "/event/{id}").authenticated()
+                .antMatchers(HttpMethod.GET, "/events/{keyword}").authenticated()
                 .antMatchers(HttpMethod.GET, "/events").authenticated();
+
     }
 }

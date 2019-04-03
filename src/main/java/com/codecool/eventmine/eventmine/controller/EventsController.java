@@ -16,6 +16,7 @@ public class EventsController {
     private ConcertRepository concertRepository;
 
     @GetMapping("")
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<Concert> listEventsByPopularity() {
         List<Concert> concerts = concertRepository.getConcertsByPopularity();
         for (Event concert : concerts) {
@@ -26,6 +27,7 @@ public class EventsController {
     }
 
     @GetMapping("/{keyword}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<Concert> listEventsByKeyword(@PathVariable("keyword") String keyword) {
         System.out.println("keyword: " + keyword);
         List<Concert> events = concertRepository.findConcertByKeyword(keyword);
