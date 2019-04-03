@@ -51,5 +51,30 @@ public class ConcertRepositoryTests {
         assertThat(concert.getId()).isEqualTo(2);
     }
 
+    @Test
+    public void findEventsByKeyword() {
+        Concert prodigy1 = Concert.builder()
+                .name("Prodigy1")
+                .date(LocalDate.of(2019, 7, 20))
+                .location("Budapest")
+                .build();
+
+        Concert hansZimmer = Concert.builder()
+                .name("Hans Zimmer")
+                .date(LocalDate.of(2019, 7, 20))
+                .location("Budapest")
+                .build();
+
+        Concert prodigy2 = Concert.builder()
+                .name("Prodigy2")
+                .date(LocalDate.of(2019, 7, 20))
+                .location("Budapest")
+                .build();
+        concertRepository.saveAll(Arrays.asList(prodigy1, hansZimmer, prodigy2));
+
+        List<Concert> concerts = concertRepository.findConcertByKeyword("Pro");
+        assertThat(concerts).hasSize(2);
+    }
+
 
 }
