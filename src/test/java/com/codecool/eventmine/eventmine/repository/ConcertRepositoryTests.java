@@ -76,5 +76,52 @@ public class ConcertRepositoryTests {
         assertThat(concerts).hasSize(2);
     }
 
+    @Test
+    public void listEventsOrderByPopularity() {
+        Concert prodigy = Concert.builder()
+                .name("Prodigy")
+                .date(LocalDate.of(2019, 7, 20))
+                .location("Budapest")
+                .build();
 
+        Concert hansZimmer = Concert.builder()
+                .name("Hans Zimmer")
+                .date(LocalDate.of(2019, 7, 20))
+                .location("Budapest")
+                .build();
+
+        Concert pink = Concert.builder()
+                .name("Pink")
+                .date(LocalDate.of(2019, 7, 20))
+                .location("Budapest")
+                .build();
+
+        ConcertTicket ticket1 = ConcertTicket.builder()
+                .price(10000)
+                .place("D12")
+                .placeType(PlaceType.STANDING)
+                .event(prodigy)
+                .build();
+
+        ConcertTicket ticket2 = ConcertTicket.builder()
+                .price(10000)
+                .place("D12")
+                .placeType(PlaceType.STANDING)
+                .event(prodigy)
+                .build();
+
+        ConcertTicket ticket3 = ConcertTicket.builder()
+                .price(10000)
+                .place("D12")
+                .placeType(PlaceType.STANDING)
+                .event(hansZimmer)
+                .build();
+
+        prodigy.setAvailableTickets(Arrays.asList(ticket1, ticket2));
+        hansZimmer.setAvailableTickets(Collections.singletonList(ticket3));
+        concertRepository.saveAll(Arrays.asList(prodigy, hansZimmer, pink));
+
+        List<Concert> concerts = concertRepository.getConcertsByPopularity();
+        assertThat(concerts).containsSequence(hansZimmer, prodigy);
+    }
 }
