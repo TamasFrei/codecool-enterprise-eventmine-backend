@@ -39,16 +39,19 @@ public class ConcertRepositoryTests {
                 .date(LocalDate.of(2019, 7, 20))
                 .location("Budapest")
                 .build();
+        prodigy.setId(1);
 
         Concert hansZimmer = Concert.builder()
                 .name("Hans Zimmer")
                 .date(LocalDate.of(2019, 7, 20))
                 .location("Budapest")
                 .build();
-        concertRepository.saveAll(Arrays.asList(prodigy, hansZimmer));
 
-        Concert concert = concertRepository.findConcertById(2);
-        assertThat(concert.getId()).isEqualTo(2);
+        concertRepository.saveAll(Arrays.asList(prodigy, hansZimmer));
+        Object id = entityManager.getId(hansZimmer);
+
+        Concert concert = concertRepository.findConcertById((Integer) id);
+        assertThat(concert.getId()).isEqualTo((Integer) id);
     }
 
     @Test
